@@ -23,7 +23,7 @@ public class MyAutonomous extends LinearOpMode {
         robot.frontRight.setPower(0.5);
         robot.backLeft.setPower(0.5);
         robot.backRight.setPower(0.5);
-        sleep(1000); // drive forward for 1 second
+        sleep(1000); 
 
         robot.frontLeft.setPower(0);
         robot.frontRight.setPower(0);
@@ -32,12 +32,12 @@ public class MyAutonomous extends LinearOpMode {
 
         robot.elevator.setPower(1.0);
         robot.reverseElevator.setPower(1.0);
-        sleep(500); // run elevator for 0.5 seconds
+        sleep(500); 
         robot.elevator.setPower(0);
         robot.reverseElevator.setPower(0);
 
-        robot.grabber.setPosition(1); // close grabber
-        sleep(500); // wait for servo to move
+        robot.grabber.setPosition(1); 
+        sleep(500);
 
         robot.frontLeft.setPower(-0.5);
         robot.frontRight.setPower(-0.5);
