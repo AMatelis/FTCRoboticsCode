@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Hybrid Auto + TeleOp", group="Linear OpMode")
-public class HybridAutoTeleOp extends BaseAuto {
+@Autonomous(name="Four-Mode Full Autonomous", group="Linear OpMode")
+public class FourModeAuto extends BaseAuto {
 
     @Override
     public void runOpMode() {
@@ -28,6 +28,8 @@ public class HybridAutoTeleOp extends BaseAuto {
             if(gamepad1.dpad_right) startPosition = 2;
             if(gamepad1.dpad_down) startPosition = 3;
             if(gamepad1.dpad_left) startPosition = 4;
+
+            sleep(100); // small delay to avoid rapid changes
         }
 
         waitForStart();
@@ -42,10 +44,35 @@ public class HybridAutoTeleOp extends BaseAuto {
         while(opModeIsActive() && matchTimer.seconds() < 30) {
 
             switch(startPosition){
-                case 1: move(1.0, 0, 0, 1200); move(0, 1.0, 0, 600); setElevator(1.0, 2000); shootBalls(2); move(-0.5, 0, 0, 800); break;
-                case 2: move(1.0, 0, 0, 1400); setElevator(1.0, 2000); shootBalls(2); move(-0.5, 0, 0, 1000); break;
-                case 3: move(1.0, 0, 0, 1200); move(0, -1.0, 0, 600); setElevator(1.0, 2000); shootBalls(2); move(-0.5, 0, 0, 800); break;
-                case 4: move(1.0, 0, 0, 1400); setElevator(1.0, 2000); shootBalls(2); move(-0.5, 0, 0, 1000); break;
+                case 1: // Bottom-left corner
+                    move(1.0, 0, 0, 1200);       // Move forward
+                    move(0, 1.0, 0, 600);        // Move right
+                    setElevator(1.0, 2000);      // Raise elevator
+                    shootBalls(2);                // Shoot into basket
+                    move(-0.5, 0, 0, 800);       // Back up
+                    break;
+
+                case 2: // Left edge
+                    move(1.0, 0, 0, 1400);
+                    setElevator(1.0, 2000);
+                    shootBalls(2);
+                    move(-0.5, 0, 0, 1000);
+                    break;
+
+                case 3: // Bottom-right corner
+                    move(1.0, 0, 0, 1200);
+                    move(0, -1.0, 0, 600);       // Move left
+                    setElevator(1.0, 2000);
+                    shootBalls(2);
+                    move(-0.5, 0, 0, 800);
+                    break;
+
+                case 4: // Right edge
+                    move(1.0, 0, 0, 1400);
+                    setElevator(1.0, 2000);
+                    shootBalls(2);
+                    move(-0.5, 0, 0, 1000);
+                    break;
             }
 
             sleep(500); // small delay between loops
@@ -55,14 +82,12 @@ public class HybridAutoTeleOp extends BaseAuto {
         telemetry.update();
 
         // --- TeleOp starts here ---
-        // Simple TeleOp loop: joystick controls mecanum wheels, elevator, grabber
         while(opModeIsActive()) {
-
+            // Mecanum drive
             double vertical = -gamepad1.left_stick_y;
             double horizontal = gamepad1.left_stick_x;
             double rotation = gamepad1.right_stick_x;
 
-            // Calculate mecanum wheel powers
             double leftFrontPower  = vertical + horizontal + rotation;
             double rightFrontPower = vertical - horizontal - rotation;
             double leftBackPower   = vertical - horizontal + rotation;
@@ -79,13 +104,12 @@ public class HybridAutoTeleOp extends BaseAuto {
                 rightBackPower /= max;
             }
 
-            // Apply powers
             robot.frontLeft.setPower(leftFrontPower);
             robot.frontRight.setPower(rightFrontPower);
             robot.backLeft.setPower(leftBackPower);
             robot.backRight.setPower(rightBackPower);
 
-            // Elevator control (gamepad2 right stick)
+            // Elevator control
             double elevatorPower = -gamepad2.right_stick_y;
             robot.elevator.setPower(elevatorPower);
             robot.reverseElevator.setPower(elevatorPower);
@@ -94,7 +118,6 @@ public class HybridAutoTeleOp extends BaseAuto {
             if(gamepad2.x) robot.grabber.setPosition(1);
             else if(gamepad2.b) robot.grabber.setPosition(0);
 
-            // Telemetry
             telemetry.addData("Status", "TeleOp Active");
             telemetry.update();
         }
