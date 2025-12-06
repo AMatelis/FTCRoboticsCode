@@ -37,6 +37,7 @@ public class Hardware
         // Elevator Motors
         elevator = hardwareMap.get(DcMotor.class, "elevator");
         reverseElevator = hardwareMap.get(DcMotor.class, "reverse_elevator");
+        intake = hardwareMap.get(DcMotor.class, "intake"); 
         
         // Servos
         grabber = hardwareMap.get(Servo.class, "grabber");
@@ -48,7 +49,7 @@ public class Hardware
         backRight.setDirection(DcMotor.Direction.FORWARD);
         
         elevator.setDirection(DcMotor.Direction.FORWARD);
-        reverseElevator.setDirection(DcMotor.Direction.FORWARD);
+        reverseElevator.setDirection(DcMotor.Direction.FORWARD); 
         
         // Initialize Servos
         grabber.setPosition(0);
