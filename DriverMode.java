@@ -55,6 +55,8 @@ public class DriverMode extends LinearOpMode
             
             // Gamepad2 left vertical controls intake system
             intake  = gamepad2.left_stick_y;
+            intake2 = gamepad2.left_stick_y; 
+            
 
             // Calculate power per wheel based on input
             double leftFrontPower  = vertical + horizontal + rotation;
@@ -103,6 +105,7 @@ public class DriverMode extends LinearOpMode
             {
                 elevatorPower /= 2;
             }
+        
             
             // Test code that powers each motor individually based on gamepad input
             
