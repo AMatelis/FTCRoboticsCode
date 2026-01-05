@@ -126,6 +126,8 @@ Team members are encouraged to:
 * Test code before merging
 * Document new subsystems and features
 
+
+- To get started, make sure to download the FTC Robotics rev hardware and you will need to connect to the robot via usb to connect to the code that is located on the robot and update it.  Updating this repository will not automatically update the robots code.  
 Clear communication and version control discipline are expected.
 
 
@@ -136,5 +138,5 @@ This project is intended for educational and competition use within the FIRST Te
 
 ## Acknowledgments
 
-Built by the FTC team through iterative design, testing, and competition experience. Based on the official FTC SDK and community best practices.  
+Built by the FTC team through iterative design, testing, and competition experience. Based on the official FTC SDK and community best practices.  Developed under the guidance of Gonzaga faculty: Mr. Nardella and Mr. Horan as heads of the Gonzaga Eagles Robotics Team. 
 
