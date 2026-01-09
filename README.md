@@ -1,39 +1,37 @@
-# FTC Robotics Code
+# FTC Robotics Code – Gonzaga Eagles 2025-2026
 
-This repository contains the full control code for our FTC robot. It handles hardware initialization, autonomous routines, tele-operated control, and subsystem logic for all major robot components. The goal of this codebase is reliability, readability, and fast iteration during the build and competition season.
-
+This repository contains the full control code for the Gonzaga Eagles FTC robot for the 2025-2026 season. It powers the robot through both **autonomous and tele-operated phases**, managing drivetrain movement, game mechanisms, and other subsystems. The codebase was designed for **reliability, readability, and rapid iteration** during build and competition periods.
 
 ## Project Overview
 
-This codebase is structured around clear subsystems and operation modes so that each part of the robot can be developed, tested, and debugged independently. The robot is designed to support both autonomous and driver-controlled phases, with consistent behavior across practice and competition fields.
+Our team structured the code around clear subsystems and operation modes so that each part of the robot could be **developed, tested, and debugged independently**. The goal was to support both autonomous and driver-controlled phases while maintaining consistent performance across practice and competition fields.
 
-Core priorities of this project:
+During this season, I contributed to **developing a four-mode autonomous system**, analyzing and repurposing previous code, and mentoring newer team members on both programming logic and testing procedures. The work involved repeated iteration, debugging on the field, and coordinating updates with other programmers.
+
+Core priorities of the project:
 
 * Clean and modular architecture
 * Easy tuning and debugging
 * Hardware safety and fault tolerance
 * Fast deployment during matches
 
-
 ## Robot Capabilities
 
-Depending on configuration, this code supports:
+Depending on configuration, the robot can:
 
-* Drivetrain control with precise motor power management
-* Autonomous navigation using encoders, timers, and sensors
-* Game mechanism control such as intakes, slides, arms, and servos
-* TeleOp driver control with adjustable sensitivity
-* Sensor integration including IMU, distance sensors, and limit switches
+* Drive with precise mecanum control
+* Navigate autonomously using encoders, timers, and sensors
+* Operate game mechanisms such as intakes, slides, elevators, grabbers, and ball shooters
+* Respond consistently in TeleOp mode with adjustable driver control
+* Integrate sensors including IMU, distance sensors, and limit switches
 
+### Folder Roles
 
-Folder roles:
-
-* `autonomous` contains all pre-programmed match routines
-* `teleop` contains real-time driver control logic
-* `subsystems` isolates each physical mechanism
-* `hardware` maps motors, servos, and sensors
-* `util` includes math helpers, PID controllers, and timing tools
-
+* `autonomous` – pre-programmed match routines
+* `teleop` – real-time driver control logic
+* `subsystems` – isolated physical mechanisms
+* `hardware` – hardware mapping for motors, servos, and sensors
+* `util` – math helpers, PID controllers, and timing tools
 
 ## Setup Instructions
 
@@ -52,17 +50,15 @@ Folder roles:
 4. Verify hardware names match the configuration file
 5. Build and deploy to the Control Hub or Driver Station
 
-
 ## Configuration
 
-All hardware names and tuning constants are centralized to make changes quick and safe.
+All hardware names and tuning constants are centralized for safety and convenience.
 
 * Motor and servo names are defined in the hardware mapping classes
 * PID values and movement constants are stored in `RobotConstants`
-* Game specific values can be adjusted without touching core logic
+* Game-specific values can be adjusted without modifying core logic
 
 Always double-check hardware mappings before running on a real robot.
-
 
 ## Autonomous Mode
 
@@ -72,71 +68,61 @@ Autonomous routines are written as independent OpModes. Each routine:
 * Executes a defined sequence of actions
 * Uses encoders, timers, or sensors for control
 
-Autonomous code is designed to be deterministic and repeatable, even under field variance.
-
+The code is designed to be **deterministic and repeatable**, even under varying field conditions.
 
 ## TeleOp Mode
 
-TeleOp code focuses on responsiveness and driver control consistency.
-
-Features include:
+TeleOp code emphasizes **driver responsiveness and consistency**:
 
 * Adjustable drive speed scaling
-* Separate control of each mechanism
+* Independent control of each mechanism
 * Safety limits to prevent hardware damage
 * Clear mapping between gamepad input and robot behavior
 
-## Testing and Debugging
+## Testing and Iteration
 
-Recommended workflow:
+The team tested and iterated code continuously:
 
-* Test subsystems individually
-* Validate autonomous paths at low speed
-* Log telemetry values during operation
-* Tune constants incrementally
+1. Analyzed legacy routines and mapped movement sequences
+2. Refactored and modularized code for clarity
+3. Added telemetry for debugging and tuning
+4. Conducted repeated field tests, recording outcomes
+5. Mentored new programmers to replicate testing and make safe updates
 
-Telemetry output is used extensively to assist with debugging and performance tuning.
-
+This workflow ensured reliable performance and **team-wide understanding of robot behavior**.
 
 ## Coding Standards
 
-This project follows consistent conventions:
-
 * Descriptive variable and method names
 * One responsibility per class
-* No hard-coded values inside logic
-* Comments explaining intent, not obvious syntax
-
-The code is written to be readable by new team members and future seasons.
-
+* No hard-coded values in logic
+* Comments explain reasoning and intent
 
 ## Safety Notes
 
 * Always lift the robot off the ground for first tests
-* Verify motor directions before full power operation
+* Verify motor directions before full-power operation
 * Keep hands clear during autonomous testing
 * Stop immediately if behavior is unexpected
-
 
 ## Contributing
 
 Team members are encouraged to:
 
 * Create new branches for major changes
-* Test code before merging
+* Test code thoroughly before merging
 * Document new subsystems and features
 
+Clear communication and version control discipline are essential for team collaboration.
 
-- To get started, make sure to download the FTC Robotics rev hardware and you will need to connect to the robot via usb to connect to the code that is located on the robot and update it.  Updating this repository will not automatically update the robots code.  
-Clear communication and version control discipline are expected.
+## Reflection
 
+Contributing to this codebase gave me hands-on experience in **engineering iteration, collaborative problem solving, and mentorship**. Working as part of a team to analyze legacy code, implement a four-mode autonomous system, and guide new programmers strengthened both my technical skills and leadership abilities.
 
 ## License
 
-This project is intended for educational and competition use within the FIRST Tech Challenge framework.
-
+This project is intended for educational and competition use within the **FIRST Tech Challenge** framework.
 
 ## Acknowledgments
 
-Built by the FTC team through iterative design, testing, and competition experience. Based on the official FTC SDK and community best practices.  Developed under the guidance of Gonzaga faculty: Mr. Nardella and Mr. Horan as heads of the Gonzaga Eagles Robotics Team. 
-
+Developed by the **Gonzaga Eagles Robotics Team** through iterative design, testing, and competition experience. Based on the official FTC SDK and community best practices. Guided by Gonzaga faculty: **Mr. Nardella and Mr. Horan**.
