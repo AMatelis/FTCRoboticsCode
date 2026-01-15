@@ -1,4 +1,4 @@
-# FTC Robotics Code – Gonzaga Eagles 2025-2026
+# FTC Robotics Code – Gonzaga Eagles 2025-2026 Season
 
 This repository contains the full control code for the Gonzaga Eagles FTC robot for the 2025-2026 season. It powers the robot through both **autonomous and tele-operated phases**, managing drivetrain movement, game mechanisms, and other subsystems. The codebase was designed for **reliability, readability, and rapid iteration** during build and competition periods.
 
