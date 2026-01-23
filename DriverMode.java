@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="DriverMode", group="Linear OpMode")
 
-public class DriverMode extends LinearOpMode 
+public class DriverModeOriginal extends LinearOpMode 
 {
         
     // Initialize variable that gives elapsed time
