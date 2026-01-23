@@ -11,6 +11,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="DriverMode", group="Linear OpMode")
 
+/*
+Gamepad Key:
+        Gamepad1:
+              Left Trigger: Slow
+              Left Stick: Forward-Back, Left-Right
+              Right Stick: Rotational
+
+        Gamepad2:
+                Left Trigger: Hold to rev death-wheel output motor
+                Right Stick: Towards the back brings balls into ramp and the death-wheel
+*/
+
 public class DriverMode extends LinearOpMode 
 {
         
@@ -19,12 +31,7 @@ public class DriverMode extends LinearOpMode
     
     private Hardware robot = new Hardware();
     
-    // Elevator  power
-    private double blasterPower;
-    private boolean blocking;
-    
-    // blasterRunning boolean
-    private boolean running;
+
 
     @Override
     public void runOpMode() 
@@ -42,8 +49,10 @@ public class DriverMode extends LinearOpMode
         // Runs until opMode is disabled
         while (opModeIsActive()) 
         {
+                
             double max;
-            
+
+//Gamepad 1 Settings
             // Left vertical moves forward and back
             double vertical = -gamepad1.left_stick_y;  // Upward on y-stick gives negative value
             
@@ -54,9 +63,6 @@ public class DriverMode extends LinearOpMode
             double rotation = gamepad1.right_stick_x;
             double elevatorPower = gamepad2.right_stick_y; 
             // double ballBlockerPower = gamepad2.right_stick_x; 
-            
-            // Gamepad2 left vertical controls intake system
-            double intake  = gamepad2.left_stick_y;
 
             // Calculate power per wheel based on input
             double leftFrontPower  = vertical + horizontal + rotation;
@@ -88,29 +94,8 @@ public class DriverMode extends LinearOpMode
                 leftBackPower /= 3;
                 rightBackPower /= 3;
             }
-            
-            //elevator toggle
-            if(gamepad2.b)
-            {
-                running = true;
-            }
-            else if(gamepad2.x)
-            {
-                running = false;
-            }
-            if(gamepad2.y){blocking = !blocking;}
-            
-            if(running){blasterPower = 1;}
-            else{blasterPower = 0;}
-            
-            // Allows for more precise movements of Elevator and Pickup Motor if left trigger is held
-            if(blasterPower != 0 && gamepad2.left_trigger > 0)
-            {
-                blasterPower /= 3;
-            }
 
-            
-            // Test code that powers each motor individually based on gamepad input
+                            // Test code that powers each motor individually based on gamepad input
             
             /*
             leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  // X button
@@ -128,6 +113,23 @@ public class DriverMode extends LinearOpMode
             robot.elevator.setPower(-elevatorPower);
             //robot.ballBlocker.setPosition(-gamepad2.y); 
             
+
+
+                
+//Gamepad 2 Settings   
+            //elevator toggle
+            if(gamepad2.b)
+            {
+                running = true;
+            }
+            else if(gamepad2.x)
+            {
+                running = false;
+            }
+            
+            // Gamepad2 left vertical controls intake system
+            double intake  = gamepad2.left_stick_y;
+
             if(gamepad2.y)
             {
                 robot.ballBlocker.setPosition(1);
@@ -137,8 +139,7 @@ public class DriverMode extends LinearOpMode
             }
             robot.intake.setPower(intake);
         } 
-            //robot.test.setPosition(lever);
-   //         robot.reverseElevator.setPower(elevatorPower);
+
 
             // Update telemetry with appropriate data
             telemetry.addData("Status", "Run Time: " + runtime.toString());
