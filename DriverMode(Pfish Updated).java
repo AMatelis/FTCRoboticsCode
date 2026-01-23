@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -108,7 +109,7 @@ public class DriverMode extends LinearOpMode
             robot.frontRight.setPower(rightFrontPower);
             robot.backLeft.setPower(leftBackPower);
             robot.backRight.setPower(rightBackPower);
-            robot.ballBlaster.setPower(blasterPower);
+         
 
             
 
@@ -117,7 +118,7 @@ public class DriverMode extends LinearOpMode
 //Gamepad 2 Settings   
 
 
-               // double intakePower = gamepad2.right_stick_y; 
+               
             
                 if (gamepad2.right_trigger > 0.1) {
                     robot.ballBlaster.setPower(1.0);
@@ -135,10 +136,11 @@ public class DriverMode extends LinearOpMode
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             //telemetry.addData("Front Left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             //telemetry.addData("Back  Left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
-            telemetry.addData("Blaster Power", "%4.2f", blasterPower);
+           // telemetry.addData("Blaster Power", "%4.2f", blasterPower);
             //telemetry.addData("Lever Position", "%4.2f", gamepad2.left_stick_y);
             //telemetry.addData("Reverse?", "%4.2f", robot.ballBlaster.Direction);
             //telemetry.addData("Grabbed", grabbed);
-            telemetry.update();
+           // telemetry.update();
         }
     }
+}
