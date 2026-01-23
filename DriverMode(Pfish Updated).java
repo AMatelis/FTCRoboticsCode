@@ -61,8 +61,7 @@ public class DriverMode extends LinearOpMode
             
             // Right hoirzontal rotates
             double rotation = gamepad1.right_stick_x;
-            double elevatorPower = gamepad2.right_stick_y; 
-            // double ballBlockerPower = gamepad2.right_stick_x; 
+
 
             // Calculate power per wheel based on input
             double leftFrontPower  = vertical + horizontal + rotation;
@@ -117,28 +116,21 @@ public class DriverMode extends LinearOpMode
 
                 
 //Gamepad 2 Settings   
-            //elevator toggle
-            if(gamepad2.b)
+
+
+               // double intakePower = gamepad2.right_stick_y; 
+            
+            if(gamepad2.left_trigger > 0)
             {
                 running = true;
             }
-            else if(gamepad2.x)
+            else if(gamepad2.left_trigger < 0)
             {
                 running = false;
             }
             
-            // Gamepad2 left vertical controls intake system
-            double intake  = gamepad2.left_stick_y;
-
-            if(gamepad2.y)
-            {
-                robot.ballBlocker.setPosition(1);
-            }else
-            {
-                robot.ballBlocker.setPosition(0);
-            }
-            robot.intake.setPower(intake);
-        } 
+            // Gamepad2 right vertical controls intake system
+            double intake  = gamepad2.right_stick_y;
 
 
             // Update telemetry with appropriate data
