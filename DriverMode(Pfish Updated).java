@@ -119,17 +119,16 @@ public class DriverMode extends LinearOpMode
 
                // double intakePower = gamepad2.right_stick_y; 
             
-            if(gamepad2.left_trigger > 0)
-            {
-                running = true;
-            }
-            else if(gamepad2.left_trigger < 0)
-            {
-                running = false;
-            }
+                if (gamepad2.right_trigger > 0.1) {
+                    robot.ballBlaster.setPower(1.0);
+                } 
+                else {
+                    robot.ballBlaster.setPower(0.0);
+                }
             
             // Gamepad2 right vertical controls intake system
-            double intake  = gamepad2.right_stick_y;
+            double intakePower = gamepad2.right_stick_y;
+                robot.intake.setPower(intakePower);
 
 
             // Update telemetry with appropriate data
