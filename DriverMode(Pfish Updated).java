@@ -109,8 +109,7 @@ public class DriverMode extends LinearOpMode
             robot.backLeft.setPower(leftBackPower);
             robot.backRight.setPower(rightBackPower);
             robot.ballBlaster.setPower(blasterPower);
-            robot.elevator.setPower(-elevatorPower);
-            //robot.ballBlocker.setPosition(-gamepad2.y); 
+
             
 
 
