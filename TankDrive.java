@@ -31,7 +31,7 @@ public class TankDrive extends LinearOpMode
     
     private Hardware robot = new Hardware();
     
-
+    private boolean slowed = false;
 
     @Override
     public void runOpMode() 
@@ -86,14 +86,17 @@ public class TankDrive extends LinearOpMode
             }
             
             // Allows for more precise movements if left trigger is held
-            if(gamepad1.left_trigger > 0)
+            if(gamepad1.a > 0)
+            {
+                slowed = !slowed;
+            }
+            if(slowed)
             {
                 leftFrontPower /= 3;
                 rightFrontPower /= 3;
                 leftBackPower /= 3;
                 rightBackPower /= 3;
-            }
-
+	    }
                             // Test code that powers each motor individually based on gamepad input
             
             /*
